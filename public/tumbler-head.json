@@ -2,13 +2,13 @@
   "schema": "rapp-sentinel-head/1.0",
   "neighborhood": "vision-court",
   "name": "RAPP Vision Sentinel Neighborhood (vision-court)",
-  "utc": "2026-08-04T16:01:46.985Z",
+  "utc": "2026-08-04T16:05:12.408Z",
   "heads": {
     "tumbler": {
       "rappid": "rappid:@kody-w/watcher-tumbler:27565e42cfc0ec8ce8a2e67a59e236b6829699c028ddd0229ba22a164a9634df",
-      "seq": 5,
-      "frame_hash": "60e424d63ceb45f8167de6d85be37d46c798fc63708abb69f42aed79755002fb",
-      "utc": "2026-08-04T16:01:46.984Z"
+      "seq": 6,
+      "frame_hash": "f5a1f55519573319f04ffd04c0145c993f2497dae47db2f48bcedc99bac3d581",
+      "utc": "2026-08-04T16:05:12.407Z"
     }
   }
 }
