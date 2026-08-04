@@ -1,0 +1,9 @@
+{
+  "level": 0,
+  "_level_note": "0 = observe only. This trial does not grant a repair arm: a check reports and a person decides. Raising this is a separate decision that needs its own evidence.",
+  "notify": false,
+  "watch_repos": ["kody-w/rapp-vision-neighborhood"],
+  "commons_repo": "",
+  "_twin": "tumbler",
+  "_peer": "fieldguide"
+}

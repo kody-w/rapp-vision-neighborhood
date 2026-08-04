@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.rapp.vision-tumbler-producer</string>
+
+  <!-- PYTHON PATH IS DELIBERATE. rapp-sentinel's own templates hardcode
+       /usr/bin/python3, which on this machine is 3.9.6 - not the 3.11 the
+       producers were written and tested against. The producers are written to
+       run on both, but pinning the interpreter the tests actually used is the
+       difference between a job that works and a job that works until someone
+       adds a walrus operator. Override at install time if 3.11 lives elsewhere. -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>__PYTHON__</string>
+    <string>__DIR__/producers/tumbler_producer.py</string>
+  </array>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key><string>__HOME__</string>
+    <key>PATH</key><string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+
+  <!-- Once a day. These twins publish a daily artifact; running more often
+       would not produce more news, it would produce more identical upserts.
+       StartCalendarInterval rather than StartInterval so the run lands at a
+       predictable hour and the 26h freshness check has a stable expectation. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>__HOUR__</integer>
+    <key>Minute</key><integer>__MINUTE__</integer>
+  </dict>
+
+  <!-- Deliberately false. A laptop that wakes at 3am should not fire a
+       producer the moment launchd loads; the calendar interval is the
+       schedule, and RunAtLoad would double-post on every reboot. The upsert
+       makes that harmless, but harmless noise is still noise. -->
+  <key>RunAtLoad</key><false/>
+
+  <key>StandardOutPath</key><string>__DIR__/logs/tumbler-producer.out.log</string>
+  <key>StandardErrorPath</key><string>__DIR__/logs/tumbler-producer.err.log</string>
+
+  <key>ProcessType</key><string>Background</string>
+  <key>LowPriorityIO</key><true/>
+</dict>
+</plist>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.rapp.vision-tumbler-sentinel</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>__PYTHON__</string>
+    <string>__DIR__/sentinel/tumbler/tick.py</string>
+  </array>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key><string>__HOME__</string>
+    <key>PATH</key><string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+
+  <!-- Every 15 minutes, matching rapp-sentinel's own cadence. The thing being
+       watched changes once a day, so this is not about sampling rate - it is
+       so that when a channel does go stale, the chain has a dense record of
+       when it started rather than a single daily data point. -->
+  <key>StartInterval</key><integer>900</integer>
+
+  <!-- Deliberately NOT KeepAlive: this is a periodic task, not a daemon.
+       KeepAlive restarts it in a tight loop the moment a tick exits, which is
+       every 20 seconds forever. -->
+  <key>RunAtLoad</key><true/>
+
+  <key>StandardOutPath</key><string>__DIR__/logs/tumbler-sentinel.out.log</string>
+  <key>StandardErrorPath</key><string>__DIR__/logs/tumbler-sentinel.err.log</string>
+
+  <key>ProcessType</key><string>Background</string>
+  <key>LowPriorityIO</key><true/>
+</dict>
+</plist>
