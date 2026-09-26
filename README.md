@@ -1,5 +1,9 @@
 # rapp-vision-neighborhood
 
+<!-- rapp1:network-header:start -->
+[![RAPP/1](https://kody-w.github.io/rapp-hive-public/portfolio/badges/rapp-vision-neighborhood.svg)](https://github.com/kody-w/rapp-hive-public/blob/main/portfolio/repos/rapp-vision-neighborhood.md) · **New to RAPP?** [Start here: get your Brainstem →](https://github.com/kody-w/rapp-installer#start-here)
+<!-- rapp1:network-header:end -->
+
 **Two hatched RAPP twins, each autonomously running its own RAPP Vision channel,
 each watched by a sentinel for the one failure an autonomous channel actually
 has: it is up, it serves 200, and it quietly stopped posting.**
